@@ -1265,7 +1265,7 @@
     .project-featured,
     .project-card,
     .project-mini {
-      will-change: filter;
+      will-change: transform;
       transition: border-color 0.3s, transform 0.3s var(--ease-out-expo), box-shadow 0.4s, filter 0.2s;
     }
 
@@ -1593,15 +1593,18 @@
     /* ============================================================
        BLENDER GRID
     ============================================================ */
-   .blender-grid {
-  columns: 3;
-  column-gap: 0.75rem;
-}
-.blender-grid a, .blender-grid .blender-item {
-  display: block;
-  break-inside: avoid;
-  margin-bottom: 0.75rem;
-}
+    .blender-grid {
+      columns: 3;
+      column-gap: 0.75rem;
+    }
+
+    .blender-grid a,
+    .blender-grid .blender-item {
+      display: block;
+      break-inside: avoid;
+      margin-bottom: 0.75rem;
+    }
+
     .blender-item {
       aspect-ratio: unset;
       overflow: hidden;
@@ -1609,10 +1612,12 @@
       border: 1px solid var(--border);
       transition: border-color 0.3s, transform 0.3s var(--ease-out-expo);
     }
+
     .blender-item:hover {
       border-color: var(--border-h);
       transform: scale(1.02);
     }
+
     .blender-item img {
       width: 100%;
       height: auto;
@@ -1621,15 +1626,22 @@
       filter: grayscale(0.2) brightness(0.85);
       transition: filter 0.3s, transform 0.3s var(--ease-out-expo);
     }
+
     .blender-item:hover img {
       filter: grayscale(0) brightness(1);
       transform: scale(1.05);
     }
+
     @media (max-width: 768px) {
-      .blender-grid { columns: 2; }
+      .blender-grid {
+        columns: 2;
+      }
     }
+
     @media (max-width: 480px) {
-      .blender-grid { columns: 1; }
+      .blender-grid {
+        columns: 1;
+      }
     }
   </style>
 </head>
@@ -1931,7 +1943,9 @@
         <div class="project-featured-inner">
           <div class="project-media" style="width:100%;height:100%;align-self:stretch;">
             <div class="project-media-bg" aria-hidden="true"></div>
-            <div aria-hidden="true" style="position:absolute;inset:0;background:linear-gradient(90deg, transparent 60%, var(--surface) 100%);z-index:1;pointer-events:none"></div>
+            <div aria-hidden="true"
+              style="position:absolute;inset:0;background:linear-gradient(90deg, transparent 60%, var(--surface) 100%);z-index:1;pointer-events:none">
+            </div>
 
             <img class="thumb-img" src="media/character_controller_thumb.png" alt="3D Character Controller Gameplay"
               style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0">
@@ -2246,8 +2260,10 @@
   <section id="blender" aria-labelledby="blender-heading">
     <div class="container" style="padding-top:5rem;padding-bottom:5rem">
       <div class="section-label reveal">3D Art</div>
-      <h2 class="projects-heading reveal reveal-delay-1" id="blender-heading" style="margin-bottom:0.5rem">Blender Projects</h2>
-      <p class="projects-sub reveal reveal-delay-2" style="margin-bottom:3rem">3D modelling, texturing, and scene work.</p>
+      <h2 class="projects-heading reveal reveal-delay-1" id="blender-heading" style="margin-bottom:0.5rem">Blender
+        Projects</h2>
+      <p class="projects-sub reveal reveal-delay-2" style="margin-bottom:3rem">3D modelling, texturing, and scene work.
+      </p>
       <div class="blender-grid reveal reveal-delay-3">
         <div class="blender-item"><img src="media/women.png" alt="3D female character model"></div>
         <div class="blender-item"><img src="media/traffic-light.png" alt="Traffic light 3D model"></div>
@@ -2502,6 +2518,7 @@
         entries.forEach(entry => {
           if (entry.isIntersecting) {
             entry.target.classList.add('visible');
+            revealObserver.unobserve(entry.target);
           }
         });
       }, { threshold: 0.12 });
